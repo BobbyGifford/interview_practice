@@ -4,11 +4,11 @@ var map = {
   "{": "}"
 };
 
-var isValid = function(s) {
-  var stack = [];
+var isValid = function(str) {
+  let stack = [];
 
-  for (let char of s) {
-    if (map[char]) {
+  for (char of str) {
+    if (char in map) {
       stack.push(map[char]);
     } else {
       if (char !== stack.pop()) {
@@ -16,7 +16,6 @@ var isValid = function(s) {
       }
     }
   }
-
   return stack.length === 0;
 };
 

@@ -30,10 +30,6 @@ class LinkedList {
   }
 
   getLast() {
-    if (!this.head) {
-      return null;
-    }
-
     let currentNode = this.head;
 
     while (currentNode) {
@@ -42,7 +38,6 @@ class LinkedList {
       }
       currentNode = currentNode.next;
     }
-    return currentNode;
   }
 
   clear() {
@@ -50,38 +45,23 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (!this.head) {
-      return null;
-    }
     this.head = this.head.next;
   }
 
   removeLast() {
-    if (!this.head) {
-      return null;
-    }
-    if (!this.head.next) {
-      return null;
-    }
-
     let previous = this.head;
     let currentNode = this.head.next;
 
     while (currentNode.next) {
-      previous = currentNode;
+      previous = previous.next;
       currentNode = currentNode.next;
     }
     previous.next = null;
   }
 
   insertLast(data) {
-    let currentLastNode = this.getLast();
-
-    if (currentLastNode) {
-      currentLastNode.next = new Node(data);
-    } else {
-      this.head = new Node(data);
-    }
+    let lastNode = this.getLast;
+    lastNode.next = new Node(data);
   }
 
   getAt(index) {
@@ -89,7 +69,7 @@ class LinkedList {
     let currentNode = this.head;
 
     while (currentNode) {
-      if (index === counter) {
+      if (counter === index) {
         return currentNode;
       }
       counter++;
@@ -161,9 +141,10 @@ list.head = firstNode;
 list.insertFirst(20);
 list.insertFirst(30);
 list.insertFirst(70);
-list.insertAt(3, 50);
-console.log(list.getAt(1));
+list.insertAt(1, 77);
+list.removeFirst();
+list.insertFirst(80);
 
-// console.log(list);
+console.log(midpoint(list));
 
-// 70 30 20 10 50
+// 80 77 30 20 10
