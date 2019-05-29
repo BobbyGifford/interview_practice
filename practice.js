@@ -1,28 +1,16 @@
-const shortestDistance = (words, word1, word2) => {
-  w1 = -1;
-  w2 = -1;
-  min = words.length;
-
-  for (let i = 0; i < words.length; i++) {
-    if (word1 === words[i]) {
-      w1 = i;
-    }
-    if (word2 === words[i]) {
-      w2 = i;
-    }
-
-    if (w1 >= 0 && w2 >= 0) {
-      min = Math.min(min, Math.abs(w1 - w2));
+const isIsomorphic = (s, t) => {
+  if (s === t) return true;
+  var lens = s.length;
+  var i = 1;
+  if (lens !== t.length) return false;
+  while (i < lens) {
+    if (s.indexOf(s[i]) === t.indexOf(t[i])) {
+      i++;
+    } else {
+      break;
     }
   }
-
-  return min;
+  return i === lens;
 };
 
-console.log(
-  shortestDistance(
-    ["practice", "makes", "perfect", "coding", "makes"],
-    "practice",
-    "coding"
-  )
-);
+console.log(isIsomorphic("asdfa", "qwerq"));
